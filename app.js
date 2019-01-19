@@ -11,9 +11,19 @@ var showListRouter = require('./routes/showList');
 var addItemRouter = require('./routes/addItem');
 var deleteItemRouter = require('./routes/deleteItem');
 
-// mongoose.connect("mongodb://heroku_dl6q3j4d:r5vl5tgantaqmr1ia0f5ddq7b2@ds157574.mlab.com:57574/heroku_dl6q3j4d", { useNewUrlParser: true });
-var app = express();
+var mongoURL = "mongodb://heroku_dl6q3j4d:heroku_dl6q3j4d@ds157574.mlab.com:57574/heroku_dl6q3j4d";
+mongoose.connect(mongoURL, { useNewUrlParser: true }, function(error) {
+  if (error) {
+    console.log(error);
+  } else {
+    console.log(mongoose.connection.readyState);
+    console.log('connected! should be 1');
+  }
+});
 
+
+
+var app = express();
 
 
 // view engine setup
