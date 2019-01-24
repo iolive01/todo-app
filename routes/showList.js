@@ -5,14 +5,12 @@ var mongoose = require('mongoose');
 var Todo = mongoose.model('Todo');
 
 // Show the list of the users
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res) {
 
     Todo.find(function (err, todos) {
         if (err) {
             console.log(err);
         }
-
-        console.log(todos);
         res.send(todos);
     });
 
