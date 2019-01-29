@@ -1,12 +1,10 @@
 doctype html
 html(ng-app='todoAppAng')
   head
-    title= title
+    title= Todo
     link(rel='stylesheet', href='/stylesheets/style.css')
     script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js")
     script(src="angularCore.js")
   body
     div(ng-controller="mainController")
-      h1 hi
-      p another lkjort: {{test}}
       block content
