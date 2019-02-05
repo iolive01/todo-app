@@ -6,16 +6,27 @@ var Todo = mongoose.model('Todo');
 
 /* GET users listing. */
 router.post('/', function(req, res, next) {
-    // res.send('inside addItem');
     console.log('posting the new todo list item');
-    console.log('request:', req.body.text);
-   // var newTodo = { text: req.body.text };
     Todo.create({text: req.body.text}, function(err) {
-        console.log("req body text", req.body.text);
+        // console.log("req body text", req.body.text);
         if (err) console.log(err);
-    });
 
-    res.send('successful post');
+        Todo.find(function (err, todos) {
+            if (err) {
+                console.log(err);
+            }
+
+            var parsedData = [];
+
+            for (i = 0; i < todos.length; i++) {
+                parsedData[i] = {"_id": todos[i]._id, "text": todos[i].text}
+            }
+
+            console.log('PARSED FROM FIND parsedData');
+            res.send(parsedData);
+        });
+
+    });
 
 });
 

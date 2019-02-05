@@ -13,15 +13,12 @@ router.get('/', function(req, res) {
         }
 
         var parsedData = [];
+
         for (i = 0; i < todos.length; i++) {
             parsedData[i] = {"_id": todos[i]._id, "text": todos[i].text}
         }
 
         console.log(parsedData);
-        // console.log(todos[0].text);
-        // console.log(todos[0]._id);
-        // console.log(todos[0]);
-        // console.log(todos.length);
         res.send(parsedData);
     });
 
