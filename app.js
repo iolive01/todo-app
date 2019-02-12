@@ -17,7 +17,7 @@ mongoose.connect(mongoURL, { useNewUrlParser: true }, function(error) {
 });
 
 // Common model, will be exported to all mongoose objects
-var Todo = mongoose.model('Todo', {text: String});
+var Todo = mongoose.model('Todo', {text: String, done: false});
 
 // Different routes
 var indexRouter = require('./routes/index');

@@ -6,20 +6,22 @@ var Todo = mongoose.model('Todo');
 
 // Show the list of the users
 router.get('/', function(req, res) {
-
     Todo.find(function (err, todos) {
         if (err) {
             console.log(err);
         }
 
-        var parsedData = [];
-
+        var doneItems = [];
+        var todoItems = [];
         for (i = 0; i < todos.length; i++) {
-            parsedData[i] = {"_id": todos[i]._id, "text": todos[i].text}
+            if (todos[i].done) {
+                doneItems.push({"_id": todos[i]._id, "text": todos[i].text});
+            } else {
+                todoItems.push({"_id": todos[i]._id, "text": todos[i].text});
+            }
         }
 
-        console.log(parsedData);
-        res.send(parsedData);
+        res.send([todoItems, doneItems]);
     });
 
 });

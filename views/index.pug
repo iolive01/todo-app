@@ -4,7 +4,7 @@ block content
   div(class='text-center container')
     h1 What do you need to do today?
 
-    form(ng-submit='createTodo()')
+    form(ng-submit='createTodo()' autocomplete='off')
       div(class='row')
         div(class='col col-md-offset-5')
           div.form-group
@@ -15,15 +15,20 @@ block content
   div(class='container')
     div(class='row')
       div(class='col')
-        h3(class='text-center notDone') You can do it!
-        h6(class='text-center notDone') Here's what you have left!
+        div(class='text-center notDone')
+          h3 You can do it!
+          h6 Here's what you have left!
+          button(class='btn btn-outline-danger btn-sm') mark all done
         div(class='checkbox row checkbox-circle' ng-repeat='todo in todos' ng-click='deleteTodo(todo._id)')
           label
             input(type='checkbox')
             | {{todo.text}}
 
       div(class='col')
-        h3(class='text-center done') Nice work!
-        h6(class='text-center done') You've done all this stuff!
-        p form data (test): {{formData}}
+        div(class='text-center done')
+          h3 Nice work!
+          h6 You've done all this stuff!
+          button(class='btn btn-outline-success btn-sm') clear all
+        div(class='done' ng-repeat='doneTask in done')
+            li {{doneTask.text}}
 

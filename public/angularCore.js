@@ -6,20 +6,23 @@ todoAppAng.controller('mainController', function($scope, $http) {
     $http.get('/showList').
         then(function(response) {
             console.log('hi');
-            $scope.todos = response.data;
+            $scope.todos = response.data[0];
+            $scope.done = response.data[1];
         });
 
     $scope.createTodo = function() {
         $http.post('/addItem', {"text": $scope.formData}).then(function(response) {
             $scope.formData = '';
-            $scope.todos = response.data;
+            $scope.todos = response.data[0];
+            $scope.done = response.data[1];
         });
     }
 
     // trigger this on checkbox click
     $scope.deleteTodo = function(id) {
         $http.delete('/deleteItem?_id=' + id).then(function(response) {
-            $scope.todos = response.data;
+            $scope.todos = response.data[0];
+            $scope.done = response.data[1];
             console.log('responded');
         });
     }

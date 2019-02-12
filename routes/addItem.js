@@ -7,7 +7,7 @@ var Todo = mongoose.model('Todo');
 /* GET users listing. */
 router.post('/', function(req, res, next) {
     console.log('posting the new todo list item');
-    Todo.create({text: req.body.text}, function(err) {
+    Todo.create({text: req.body.text, done: false}, function(err) {
         // console.log("req body text", req.body.text);
         if (err) console.log(err);
 
@@ -16,14 +16,18 @@ router.post('/', function(req, res, next) {
                 console.log(err);
             }
 
-            var parsedData = [];
-
+            var doneItems = [];
+            var todoItems = [];
             for (i = 0; i < todos.length; i++) {
-                parsedData[i] = {"_id": todos[i]._id, "text": todos[i].text}
+                if (todos[i].done) {
+                    doneItems.push({"_id": todos[i]._id, "text": todos[i].text});
+                } else {
+                    todoItems.push({"_id": todos[i]._id, "text": todos[i].text});
+                }
             }
 
-            console.log('PARSED FROM FIND parsedData');
-            res.send(parsedData);
+            res.send([todoItems, doneItems]);
+
         });
 
     });

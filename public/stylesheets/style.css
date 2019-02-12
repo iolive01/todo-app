@@ -7,20 +7,34 @@ h1 {
   color: #4A4A4A;
 }
 
+.li {
 
+}
 .done {
   color: forestgreen;
+  font-size: 18px;
+  margin-left: 50px;
 }
 
 .form-control-lg {
   margin-bottom: 30px;
 }
+
+.form-control:focus {
+    border-color: #2F7C6B;
+    box-shadow: inset 0 1px 1px #D1EDB2, 0 0 8px #D1EDB2;
+}
+
 .notDone {
   color: crimson;
 }
 
 .checkbox {
   margin-right: 50px;
+}
+
+.btn{
+    margin-top: 10px;
 }
 
 .checkbox label input {

@@ -10,37 +10,31 @@ router.delete('/', function(req, res) {
     //right now it is in req.query, but might change to a diff place
     console.log("request : ", req.query._id);
 
-    Todo.deleteOne({_id : req.query._id}, function(err) {
+    Todo.findOneAndUpdate({_id : req.query._id}, {done: true}, function(err) {
 
         // console.log("req body text", req.body.text);
         if (err) console.log(err);
 
-        // res.send('deleted');
         Todo.find(function (err, todos) {
             if (err) {
                 console.log(err);
             }
-
-            var parsedData = [];
-
+            console.log('TODOS:', todos);
+            var doneItems = [];
+            var todoItems = [];
+            console.log('todo items before:', todoItems)
             for (i = 0; i < todos.length; i++) {
-                parsedData[i] = {"_id": todos[i]._id, "text": todos[i].text}
+                if (todos[i].done) {
+                    doneItems.push({"_id": todos[i]._id, "text": todos[i].text});
+                } else {
+                    todoItems.push({"_id": todos[i]._id, "text": todos[i].text});
+                }
             }
 
-            console.log('PARSED FROM FIND parsedData');
-            res.send(parsedData);
+            res.send([todoItems, doneItems]);
         });
 
     });
-
-
-
-
-
-
-
-
-
 
 });
 
