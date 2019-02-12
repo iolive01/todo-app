@@ -2,6 +2,7 @@ extends layout
 
 block content
   div(class='text-center container')
+    h2 {{test}}
     h1 What do you need to do today?
 
     form(ng-submit='createTodo()' autocomplete='off')
@@ -18,7 +19,7 @@ block content
         div(class='text-center notDone')
           h3 You can do it!
           h6 Here's what you have left!
-          button(class='btn btn-outline-danger btn-sm') mark all done
+          button(class='btn btn-outline-danger btn-sm' ng-click='markAllDone()') mark all done
         div(class='checkbox row checkbox-circle' ng-repeat='todo in todos' ng-click='deleteTodo(todo._id)')
           label
             input(type='checkbox')
@@ -28,7 +29,7 @@ block content
         div(class='text-center done')
           h3 Nice work!
           h6 You've done all this stuff!
-          button(class='btn btn-outline-success btn-sm') clear all
+          button(class='btn btn-outline-success btn-sm' ng-click='clearAll()') clear all
         div(class='done' ng-repeat='doneTask in done')
             li {{doneTask.text}}
 

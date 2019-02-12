@@ -25,6 +25,8 @@ var usersRouter = require('./routes/users');
 var showListRouter = require('./routes/showList');
 var addItemRouter = require('./routes/addItem');
 var deleteItemRouter = require('./routes/deleteItem');
+var markAllDoneRouter = require('./routes/markAllDone');
+var clearAllRouter = require('./routes/clearAll');
 
 var app = express();
 
@@ -43,6 +45,8 @@ app.use('/users', usersRouter);
 app.use('/showList', showListRouter);
 app.use('/addItem', addItemRouter);
 app.use('/deleteItem', deleteItemRouter);
+app.use('/markAllDone', markAllDoneRouter);
+app.use('/clearAll', clearAllRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

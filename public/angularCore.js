@@ -3,9 +3,9 @@ var todoAppAng = new angular.module('todoAppAng', []);
 
 todoAppAng.controller('mainController', function($scope, $http) {
     $scope.formData = '';
+
     $http.get('/showList').
         then(function(response) {
-            console.log('hi');
             $scope.todos = response.data[0];
             $scope.done = response.data[1];
         });
@@ -23,7 +23,20 @@ todoAppAng.controller('mainController', function($scope, $http) {
         $http.delete('/deleteItem?_id=' + id).then(function(response) {
             $scope.todos = response.data[0];
             $scope.done = response.data[1];
-            console.log('responded');
+        });
+    }
+
+    $scope.markAllDone = function() {
+        $http.delete('/markAllDone').then(function(response) {
+            $scope.todos = response.data[0];
+            $scope.done = response.data[1];
+        });
+    }
+
+    $scope.clearAll = function() {
+        $http.delete('/clearAll').then(function(response) {
+            $scope.todos = response.data[0];
+            $scope.done = response.data[1];
         });
     }
 
