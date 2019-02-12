@@ -1,8 +1,48 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px "Hiragino Kaku Gothic Pro";
 }
 
-a {
-  color: #00B7FF;
+h1 {
+  color: #4A4A4A;
+}
+
+
+.done {
+  color: forestgreen;
+}
+
+.form-control-lg {
+  margin-bottom: 30px;
+}
+.notDone {
+  color: crimson;
+}
+
+.checkbox {
+  margin-right: 50px;
+}
+
+.checkbox label input {
+  /*padding-left: 10px;*/
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  margin-right: 15px;
+}
+
+.checkbox label {
+  font-size: 18px;
+  margin-left: 50px;
+  color: crimson;
+}
+
+.checkbox input {
+  background-color: chartreuse;
+  border-radius: 50%;
+  border-color: chartreuse;
+}
+
+.checkbox.checkbox-circle label::before {
+  border-radius: 50%;
 }

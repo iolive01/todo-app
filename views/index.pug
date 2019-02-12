@@ -1,16 +1,29 @@
 extends layout
 
 block content
-  h1 What do you need to do today?
-  div(class='checkbox' ng-repeat='todo in todos' ng-click='deleteTodo(todo._id)')
-    label
-      input(type='checkbox')
-      | {{todo.text}}
+  div(class='text-center container')
+    h1 What do you need to do today?
 
-  p form data (test): {{formData}}
+    form(ng-submit='createTodo()')
+      div(class='row')
+        div(class='col col-md-offset-5')
+          div.form-group
+            label(for='name')
+            input#name.form-control(class='form-control-lg text-center' type='text' placeholder='' ng-model='formData')
+            //button.btn.btn-primary(type='submit') Record your todo
 
-  form(ng-submit='createTodo()')
-    div.form-group
-      label(for='name') Todo Item
-      input#name.form-control(type='text' placeholder='what do you need to do?' ng-model='formData')
-      button.btn.btn-primary(type='submit') Record your todo
+  div(class='container')
+    div(class='row')
+      div(class='col')
+        h3(class='text-center notDone') You can do it!
+        h6(class='text-center notDone') Here's what you have left!
+        div(class='checkbox row checkbox-circle' ng-repeat='todo in todos' ng-click='deleteTodo(todo._id)')
+          label
+            input(type='checkbox')
+            | {{todo.text}}
+
+      div(class='col')
+        h3(class='text-center done') Nice work!
+        h6(class='text-center done') You've done all this stuff!
+        p form data (test): {{formData}}
+
