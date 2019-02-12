@@ -1,3 +1,10 @@
+/*
+
+    clearAll.js
+    API route to delete all completed items from the list.
+
+ */
+
 var express = require('express');
 var router = express.Router();
 
@@ -8,8 +15,6 @@ var Todo = mongoose.model('Todo');
 router.delete('/', function(req, res) {
 
     Todo.deleteMany({done: true}, function(err) {
-
-        // console.log("req body text", req.body.text);
         if (err) console.log(err);
 
         Todo.find(function (err, todos) {
@@ -29,9 +34,7 @@ router.delete('/', function(req, res) {
 
             res.send([todoItems, doneItems]);
         });
-
     });
-
 });
 
 module.exports = router;

@@ -1,3 +1,10 @@
+/*
+
+    index.js
+    Renders the home page.
+
+ */
+
 var express = require('express');
 var router = express.Router();
 

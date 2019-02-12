@@ -1,3 +1,10 @@
+/*
+
+    clearAll.js
+    API route to display the list of pending and completed to do items.
+
+ */
+
 var express = require('express');
 var router = express.Router();
 

@@ -1,3 +1,10 @@
+/*
+
+    deleteItem.js
+    API route to mark one item as done.
+
+ */
+
 var express = require('express');
 var router = express.Router();
 

@@ -1,4 +1,11 @@
-// Create new angular module
+/*
+
+    angularCore.js
+    Implementation of AngularJS frontend - deals with user entry, checking off
+    to do items, deleting items, clearing all, and marking all as done.
+
+ */
+
 var todoAppAng = new angular.module('todoAppAng', []);
 
 todoAppAng.controller('mainController', function($scope, $http) {
@@ -18,7 +25,6 @@ todoAppAng.controller('mainController', function($scope, $http) {
         });
     }
 
-    // trigger this on checkbox click
     $scope.deleteTodo = function(id) {
         $http.delete('/deleteItem?_id=' + id).then(function(response) {
             $scope.todos = response.data[0];
